@@ -64,3 +64,18 @@ for objective-c solutions) Please use platform-agnostic constructs where
 possible (line-endings and file-path-separators are two problematic areas).
 
 Please email your sponsor at Jane if you have any questions.
+
+## The Solution
+
+### Setup
+
+Put all files in `$GOPATH/src/github.com/hd8e3/coding-challenge-soccer`.
+
+### Execute
+
+`go build && ./coding-challenge-soccer -inputFile=/absolute/path/to/sample-input.txt`
+
+
+### Run tests
+
+`go test`

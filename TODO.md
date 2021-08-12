@@ -1,0 +1,3 @@
+* cleanup
+* error handling
+* testing
