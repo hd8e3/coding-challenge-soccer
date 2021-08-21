@@ -33,6 +33,10 @@ func (s *Sortable) Len() int {
 }
 
 func (s *Sortable) Less(i, j int) bool {
+    if s.scores[i] == s.scores[j] {
+        // If scores are identical, compare team names lexicographically
+        return s.teams[i] < s.teams[j]
+    }
     return s.scores[i] > s.scores[j]
 }
 
