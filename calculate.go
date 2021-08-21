@@ -5,6 +5,8 @@ import (
     "sort"
 )
 
+// calculateResults iterates through the lines of input to calculate the results.
+// It returns the result as a string (or an error upon failure).
 func calculateResults(inputLines []string) (string, error) {
     ret := "" // The string we will eventually return
 
@@ -45,6 +47,7 @@ func calculateResults(inputLines []string) (string, error) {
     return ret, nil
 }
 
+// addToScore adds a team's score to the set of scores.
 func addToScore(scores map[string]int, team string, scoreToAdd int) {
     v, ok := scores[team]
     if !ok {
@@ -53,11 +56,13 @@ func addToScore(scores map[string]int, team string, scoreToAdd int) {
     scores[team] = v + scoreToAdd
 }
 
+// contains returns true if theMap contains team
 func contains(theMap map[string]bool, team string) bool {
     _, ok := theMap[team]
     return ok
 }
 
+// matchDayResults returns a string representing the results for a single match day.
 func matchDayResults(currentMatchDay int, matchDayScores map[string]int) string {
     ret := ""
     ret += fmt.Sprintf("Matchday %v\n", currentMatchDay)
@@ -71,6 +76,7 @@ func matchDayResults(currentMatchDay int, matchDayScores map[string]int) string 
     return ret
 }
 
+// pluralize is a convenience function for achieving correct pluralization for a team's points.
 func pluralize(score int) string {
     if score == 1 {
         return ""

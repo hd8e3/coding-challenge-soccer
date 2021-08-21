@@ -4,6 +4,7 @@ import (
     "fmt"
 )
 
+// main is the main entrypoint into the program.
 func main() {
     inputLines, err := readInput()
     if err != nil {

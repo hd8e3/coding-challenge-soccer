@@ -6,8 +6,11 @@ import (
     "strconv"
 )
 
+// lineRegexp is a regular expression representing the format of each input line.
 var lineRegexp = regexp.MustCompile(`(.+) ([\d]+), (.+) ([\d]+)`)
 
+// parseLine parses a single line. It returns team1, team1's score, team2, and team2's score, or an
+// error upon parsing failure.
 func parseLine(line string) (string, int, string, int, error) {
     matches := lineRegexp.FindStringSubmatch(line)
     if matches == nil || len(matches) != 5 {
