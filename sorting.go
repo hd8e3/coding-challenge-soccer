@@ -1,13 +1,19 @@
 package main
 
-// Sortable implements the sort.Interface interface so that we can sort teams by their scores.
-type Sortable struct {
+import (
+    "sort"
+)
+
+var _ sort.Interface = (*sortable)(nil) // Statically ensure that our sortable struct implements the sort.Interface interface.
+
+// sortable implements the sort.Interface interface so that we can sort teams by their scores.
+type sortable struct {
     teams []string
     scores []int
 }
 
-// NewSortable constructs a new Sortable.
-func NewSortable(theMap map[string]int) *Sortable {
+// newSortable constructs a new Sortable.
+func newSortable(theMap map[string]int) *sortable {
     var teams []string
     var scores []int
 
@@ -16,16 +22,16 @@ func NewSortable(theMap map[string]int) *Sortable {
         scores = append(scores, v)
     }
 
-    return &Sortable{teams, scores}
+    return &sortable{teams, scores}
 }
 
 // Len is the number of elements in the collection.
-func (s *Sortable) Len() int {
+func (s *sortable) Len() int {
     return len(s.teams)
 }
 
 // Less reports whether the element with index i must sort before the element with index j.
-func (s *Sortable) Less(i, j int) bool {
+func (s *sortable) Less(i, j int) bool {
     if s.scores[i] == s.scores[j] {
         // If scores are identical, compare team names lexicographically
         return s.teams[i] < s.teams[j]
@@ -34,7 +40,7 @@ func (s *Sortable) Less(i, j int) bool {
 }
 
 // Swap swaps the elements with indexes i and j.
-func (s *Sortable) Swap(i, j int) {
+func (s *sortable) Swap(i, j int) {
     team1 := s.teams[i]
     team2 := s.teams[j]
     score1 := s.scores[i]

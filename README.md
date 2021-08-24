@@ -71,11 +71,24 @@ Please email your sponsor at Jane if you have any questions.
 
 Put all files in `$GOPATH/src/github.com/hd8e3/coding-challenge-soccer`.
 
+### Build
+
+`go build`
+
 ### Execute
 
-`go build && ./coding-challenge-soccer -inputFile=/absolute/path/to/sample-input.txt`
+`./coding-challenge-soccer -inputFile=sample-input.txt`
 
+or 
+
+`./coding-challenge-soccer <sample-input.txt`
 
 ### Run tests
 
 `go test`
+
+### View test coverage
+
+Generate test coverage data: `go test -coverprofile=coverage.out`
+
+View test coverage data: `go tool cover -func=coverage.out`

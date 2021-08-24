@@ -67,7 +67,7 @@ func matchDayResults(currentMatchDay int, matchDayScores map[string]int) string 
     ret := ""
     ret += fmt.Sprintf("Matchday %v\n", currentMatchDay)
 
-    sortable := NewSortable(matchDayScores)
+    sortable := newSortable(matchDayScores)
     sort.Sort(sortable)
 
     for i := 0; i < len(sortable.teams) && i < 3; i++ {
